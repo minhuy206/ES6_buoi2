@@ -97,16 +97,38 @@ let dataGlasses = [
   },
 ];
 
-const addGlasses = () => {
-  console.log(123);
+const addGlasses = (virtualImg, brand, name, color, price, description) => {
+  let content = `
+  <h5 class="glassesInfo__brand">${name} - ${brand} (${color})</h5>
+  <h5 class="glassesInfo__price">${price}</h5>
+  <h5 class="glassesInfo__description">${description}</h5>
+  `;
+
+  document.getElementById(
+    "virtualGlassesContainer"
+  ).style.backgroundImage = `url(${virtualImg})`;
+  document.getElementById("virtualGlassesContainer").style.display = "block";
+  document.getElementById("glassesInfo").style.display = "block";
+  document.getElementById("glassesInfo").innerHTML = content;
 };
 
 window.addGlasses = addGlasses;
 
+const removeGlasses = (isAdded) => {
+  if (!isAdded) {
+    return (document.getElementById("virtualGlassesContainer").style.display =
+      "none");
+  }
+
+  document.getElementById("virtualGlassesContainer").style.display = "block";
+};
+
+window.removeGlasses = removeGlasses;
+
 dataGlasses.reduce((content, glasses, index) => {
   content += `
 <div class="col-4"> 
-    <img src="${glasses.src}" alt="" width="100px" onclick="addGlasses()"/>
+    <img src="${glasses.src}" alt="" width="100px" onclick="addGlasses('${glasses.virtualImg}', '${glasses.brand}', '${glasses.name}', '${glasses.color}', '${glasses.price}', '${glasses.description}')"/>
 </div>
     `;
   return (document.getElementById("vglassesList").innerHTML = content);

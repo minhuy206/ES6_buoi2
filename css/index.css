@@ -56,12 +56,35 @@ body {
   display: none;
 }
 
+.vglasses__info .glassesInfo__description {
+  font-weight: 300;
+}
+
+.vglasses__info .glassesInfo__brand {
+  font-weight: 700;
+}
+
+.vglasses__info .glassesInfo__price {
+  display: inline-block;
+  background-color: red;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 #glasses {
   transition: all 0.5s;
 }
 
-.virtualGlassesContainer {
+#virtualGlassesContainer {
+  background-color: transparent;
+  width: 100%;
   position: absolute;
-  top: 30%;
-  left: 30%;
+  top: 32%;
+  /* left: 50%; */
+  /* transform: translateX(-50); */
+  background-image: url(../img/v1.png);
+  background-size: contain;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
